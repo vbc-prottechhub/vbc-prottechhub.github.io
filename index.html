@@ -3,332 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VBC ProtTechHub — Proteomics Technology Hub | Vienna BioCenter</title>
-  <meta name="description" content="VBC ProtTechHub — the Proteomics Technology Hub at the Vienna BioCenter. Advancing protein science through cutting-edge mass spectrometry, structural biology, and proteomics technologies." />
+  <title>VBC ProtTechHub — Coming Soon</title>
+  <meta name="description" content="VBC ProtTechHub — Proteomics Technology Hub at the Vienna BioCenter. Website coming soon." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a3a5c;
+      --navy-dark: #12293f;
+      --navy-600: #24507d;
+      --amber: #f0b429;
+      --amber-dark: #d99a12;
+      --bg: #fbfaf7;
+      --ink-soft: #4d5a6b;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Merriweather', Georgia, serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .logo-mark svg { display: block; }
+
+    .logo-text {
+      text-align: left;
+      line-height: 1.15;
+    }
+
+    .logo-name {
+      display: block;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: .7rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--amber);
+      border-radius: 99px;
+      margin: 0 auto 2rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.1rem;
+      letter-spacing: -.01em;
+    }
+
+    h1 span {
+      color: var(--amber-dark);
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: rgba(26,58,92,.07);
+      color: var(--navy-600);
+      font-size: .82rem;
+      font-weight: 600;
+      padding: .45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(26,58,92,.12);
+      letter-spacing: .01em;
+    }
+
+    .badge::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.8); }
+    }
+
+    footer {
+      margin-top: 3.5rem;
+      font-size: .82rem;
+      color: var(--ink-soft);
+    }
+
+    footer a {
+      color: var(--navy-600);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover { color: var(--amber-dark); }
+
+    /* subtle background decoration */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(900px 500px at 90% -5%, rgba(240,180,41,.15), transparent 60%),
+        radial-gradient(700px 400px at -5% 105%, rgba(36,80,125,.12), transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card { position: relative; z-index: 1; }
+  </style>
 </head>
 <body>
 
-  <!-- ===== Header / Navbar ===== -->
-  <header class="site-header" id="site-header">
-    <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="15" fill="#1a3a5c"/>
-            <path d="M9 22c2-6 4-9 7-12M9 10c4 2 7 5 9 9M20 9c-1 6 0 10 3 13" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="9" cy="10" r="2" fill="#f0b429"/>
-            <circle cx="23" cy="22" r="2" fill="#fff"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">VBC ProtTechHub</span>
-          <span class="brand-sub">Proteomics Technology Hub</span>
-        </span>
-      </a>
+  <div class="card">
 
-      <nav class="main-nav" id="main-nav" aria-label="Primary">
-        <ul>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 40 40" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="19" fill="#1a3a5c"/>
+          <path d="M11 27c2.5-7.5 5-11 9-15M11 13c5 2.5 8.5 6 11 11M25 11c-1.5 7.5 0 12.5 4 16" stroke="#f0b429" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="11" cy="13" r="2.5" fill="#f0b429"/>
+          <circle cx="29" cy="27" r="2.5" fill="#ffffff"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">VBC ProtTechHub</span>
+        <span class="logo-sub">Proteomics Technology Hub · Vienna BioCenter</span>
+      </span>
     </div>
-  </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <p class="hero-eyebrow">Vienna BioCenter · Core Technology Hub</p>
-      <h1 class="hero-title">Decoding the language of proteins,<br />one molecule at a time.</h1>
-      <p class="hero-lead">
-        The VBC Proteomics Technology Hub develops and applies next-generation
-        technologies to measure, map, and understand the proteome. We partner with
-        research groups across the campus to turn complex biological questions into
-        quantitative, reproducible answers.
+    <div class="divider"></div>
+
+    <h1>Our website is<br /><span>coming soon.</span></h1>
+
+    <p>
+      We are the Proteomics Technology Hub at the Vienna BioCenter —
+      developing next-generation tools to measure, map, and understand the proteome.
+      Our new website is currently under construction and will be live shortly.
+    </p>
+
+    <div class="badge">Site under construction</div>
+
+    <footer>
+      <p style="margin-top:1rem; margin-bottom:0;">
+        In the meantime, visit
+        <a href="https://www.viennabiocenter.org/" target="_blank" rel="noopener">viennabiocenter.org</a>
+        &nbsp;·&nbsp;
+        &copy; <span id="yr"></span> VBC ProtTechHub
       </p>
-      <div class="hero-actions">
-        <a href="#research" class="btn btn-primary">Learn More</a>
-        <a href="#contact" class="btn btn-ghost">Work With Us</a>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- ===== Research Focus ===== -->
-  <section class="section" id="research">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-eyebrow">What we do</p>
-        <h2 class="section-title">Research Focus</h2>
-        <p class="section-intro">
-          Our work spans the full proteomics pipeline — from sample preparation and
-          instrumentation to computational analysis. Below are the core areas that
-          drive our technology development.
-        </p>
-      </div>
+  </div>
 
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M6 21v-6a6 6 0 0 1 12 0v6"/><line x1="6" y1="3" x2="18" y2="3"/><line x1="6" y1="21" x2="18" y2="21"/></svg>
-          </div>
-          <h3 class="card-title">Protein Structure</h3>
-          <p class="card-text">
-            High-resolution characterization of protein folds, complexes, and dynamics.
-            Placeholder description of methods for probing three-dimensional
-            architecture and conformational states.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 4-7"/></svg>
-          </div>
-          <h3 class="card-title">Proteomics Technologies</h3>
-          <p class="card-text">
-            Development of quantitative mass-spectrometry workflows for deep, unbiased
-            proteome profiling. Placeholder text on throughput, sensitivity, and
-            reproducibility improvements.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
-          </div>
-          <h3 class="card-title">Structural Biology</h3>
-          <p class="card-text">
-            Integrating cross-linking, native MS, and computational modeling to resolve
-            macromolecular assemblies. Placeholder description of hybrid structural
-            approaches applied to challenging targets.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-          </div>
-          <h3 class="card-title">Computational Proteomics</h3>
-          <p class="card-text">
-            Building robust pipelines and machine-learning tools for spectral
-            interpretation and large-scale data integration. Placeholder text on
-            open, reusable software.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6l-6 10a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-6-10V2"/><line x1="8" y1="2" x2="16" y2="2"/></svg>
-          </div>
-          <h3 class="card-title">Sample Technologies</h3>
-          <p class="card-text">
-            Miniaturized and automated sample-prep chemistries that push detection
-            limits toward single-cell scale. Placeholder description of assay
-            development and standardization.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l7 4"/></svg>
-          </div>
-          <h3 class="card-title">Post-Translational Modifications</h3>
-          <p class="card-text">
-            Mapping phosphorylation, ubiquitination, and other modifications that
-            regulate cellular function. Placeholder text on enrichment strategies and
-            site-level quantification.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== News ===== -->
-  <section class="section section-alt" id="news">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-eyebrow">Latest updates</p>
-        <h2 class="section-title">News</h2>
-      </div>
-
-      <ul class="news-list">
-        <li class="news-item">
-          <time class="news-date" datetime="2026-08-15">Aug 15, 2026</time>
-          <div class="news-body">
-            <h3 class="news-headline">New high-throughput proteomics platform goes live</h3>
-            <p class="news-blurb">Placeholder announcement about a new instrument or workflow now available to campus users, with improved depth and turnaround.</p>
-          </div>
-        </li>
-        <li class="news-item">
-          <time class="news-date" datetime="2026-06-30">Jun 30, 2026</time>
-          <div class="news-body">
-            <h3 class="news-headline">ProtTechHub welcomes two new team members</h3>
-            <p class="news-blurb">Placeholder text introducing new staff scientists joining the hub to expand method development capacity.</p>
-          </div>
-        </li>
-        <li class="news-item">
-          <time class="news-date" datetime="2026-05-12">May 12, 2026</time>
-          <div class="news-body">
-            <h3 class="news-headline">Collaborative study published in a leading journal</h3>
-            <p class="news-blurb">Placeholder summary of a recent collaboration highlighting the hub's contribution to a major research finding.</p>
-          </div>
-        </li>
-        <li class="news-item">
-          <time class="news-date" datetime="2026-03-04">Mar 4, 2026</time>
-          <div class="news-body">
-            <h3 class="news-headline">Spring workshop: quantitative proteomics for beginners</h3>
-            <p class="news-blurb">Placeholder details about an upcoming hands-on training session open to students and postdocs across the campus.</p>
-          </div>
-        </li>
-        <li class="news-item">
-          <time class="news-date" datetime="2026-01-20">Jan 20, 2026</time>
-          <div class="news-body">
-            <h3 class="news-headline">ProtTechHub receives new infrastructure funding</h3>
-            <p class="news-blurb">Placeholder note about a grant supporting the acquisition of next-generation mass spectrometry equipment.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===== Team ===== -->
-  <section class="section" id="team">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-eyebrow">People</p>
-        <h2 class="section-title">Team</h2>
-        <p class="section-intro">A multidisciplinary team of scientists, engineers, and analysts working at the interface of biology and technology.</p>
-      </div>
-
-      <div class="team-grid">
-        <article class="member">
-          <div class="avatar" aria-hidden="true">AB</div>
-          <h3 class="member-name">Dr. Alex Bauer</h3>
-          <p class="member-role">Hub Director</p>
-        </article>
-        <article class="member">
-          <div class="avatar" aria-hidden="true">CM</div>
-          <h3 class="member-name">Dr. Camille Moreau</h3>
-          <p class="member-role">Senior Staff Scientist</p>
-        </article>
-        <article class="member">
-          <div class="avatar" aria-hidden="true">JT</div>
-          <h3 class="member-name">Jordan Tanaka</h3>
-          <p class="member-role">Instrumentation Specialist</p>
-        </article>
-        <article class="member">
-          <div class="avatar" aria-hidden="true">RN</div>
-          <h3 class="member-name">Riya Nair</h3>
-          <p class="member-role">Computational Analyst</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Publications ===== -->
-  <section class="section section-alt" id="publications">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-eyebrow">Selected work</p>
-        <h2 class="section-title">Publications</h2>
-      </div>
-
-      <ol class="pub-list">
-        <li class="pub-item">
-          <p class="pub-cite"><span class="pub-authors">Bauer A, Moreau C, et al.</span> Placeholder title on deep single-cell proteome profiling. <span class="pub-journal">Journal of Proteome Research</span>, <span class="pub-year">2026</span>.</p>
-          <a class="pub-doi" href="#">DOI: 10.0000/placeholder.2026.001</a>
-        </li>
-        <li class="pub-item">
-          <p class="pub-cite"><span class="pub-authors">Tanaka J, Nair R, et al.</span> Placeholder title on cross-linking mass spectrometry of large complexes. <span class="pub-journal">Nature Methods</span>, <span class="pub-year">2025</span>.</p>
-          <a class="pub-doi" href="#">DOI: 10.0000/placeholder.2025.014</a>
-        </li>
-        <li class="pub-item">
-          <p class="pub-cite"><span class="pub-authors">Moreau C, Bauer A, et al.</span> Placeholder title on machine-learning spectral interpretation. <span class="pub-journal">Molecular &amp; Cellular Proteomics</span>, <span class="pub-year">2025</span>.</p>
-          <a class="pub-doi" href="#">DOI: 10.0000/placeholder.2025.007</a>
-        </li>
-        <li class="pub-item">
-          <p class="pub-cite"><span class="pub-authors">Nair R, Tanaka J, et al.</span> Placeholder title on automated sample preparation chemistry. <span class="pub-journal">Analytical Chemistry</span>, <span class="pub-year">2024</span>.</p>
-          <a class="pub-doi" href="#">DOI: 10.0000/placeholder.2024.099</a>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ===== Contact ===== -->
-  <section class="section" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <p class="section-eyebrow">Get in touch</p>
-        <h2 class="section-title">Contact</h2>
-        <p class="contact-lead">Interested in a collaboration or a service project? Reach out and our team will get back to you.</p>
-        <ul class="contact-details">
-          <li>
-            <span class="contact-label">Address</span>
-            VBC Proteomics Technology Hub<br />
-            Vienna BioCenter, Dr.-Bohr-Gasse 3<br />
-            1030 Vienna, Austria
-          </li>
-          <li>
-            <span class="contact-label">Email</span>
-            <a href="mailto:info@vbc-prottechhub.example">info@vbc-prottechhub.example</a>
-          </li>
-        </ul>
-      </div>
-
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="field">
-          <label for="cf-name">Name</label>
-          <input type="text" id="cf-name" name="name" placeholder="Your name" required />
-        </div>
-        <div class="field">
-          <label for="cf-email">Email</label>
-          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
-        </div>
-        <div class="field">
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-        <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-name">VBC ProtTechHub</span>
-        <p class="footer-tagline">Proteomics Technology Hub at the Vienna BioCenter.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://www.viennabiocenter.org/" target="_blank" rel="noopener">Vienna BioCenter</a>
-        <a href="#research">Research</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer-social" aria-label="Social links">
-        <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.9l-4.5-5.9L6.3 22H3.04l8.02-9.17L2 2h7.07l4.07 5.38L18.244 2Zm-1.21 18h1.83L7.05 3.9H5.1L17.03 20Z"/></svg></a>
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21h-4V9Z"/></svg></a>
-        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.48A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; <span id="year"></span> VBC ProtTechHub · Vienna BioCenter. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="js/script.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
