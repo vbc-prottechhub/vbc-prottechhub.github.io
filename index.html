@@ -3,174 +3,488 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VBC ProtTechHub — Coming Soon</title>
-  <meta name="description" content="VAC ProtTechHub — Proteomics Technology Hub at the Vienna BioCenter. Website coming soon." />
+  <title>Proteomics Tech Hub — Vienna BioCenter</title>
+  <meta name="description" content="The Proteomics Tech Hub at the Vienna BioCenter develops next-generation single-cell proteomics and crosslinking mass spectrometry technologies to support cutting-edge research on campus." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #1a3a5c;
-      --navy-dark: #12293f;
-      --navy-600: #24507d;
-      --amber: #f0b429;
-      --amber-dark: #d99a12;
-      --bg: #fbfaf7;
-      --ink-soft: #4d5a6b;
-      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-      --font-serif: 'Merriweather', Georgia, serif;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--navy);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .card {
-      max-width: 560px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .site-logo {
-      max-width: 260px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 2.5rem;
-    }
-    .logo { margin-bottom: 0; }
-
-    .divider {
-      width: 48px;
-      height: 3px;
-      background: var(--amber);
-      border-radius: 99px;
-      margin: 0 auto 2rem;
-    }
-
-    h1 {
-      font-family: var(--font-serif);
-      font-weight: 900;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      line-height: 1.15;
-      color: var(--navy);
-      margin-bottom: 1.1rem;
-      letter-spacing: -.01em;
-    }
-
-    h1 span {
-      color: var(--amber-dark);
-    }
-
-    p {
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 2.2rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      background: rgba(26,58,92,.07);
-      color: var(--navy-600);
-      font-size: .82rem;
-      font-weight: 600;
-      padding: .45rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(26,58,92,.12);
-      letter-spacing: .01em;
-    }
-
-    .badge::before {
-      content: '';
-      display: inline-block;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--amber);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(.8); }
-    }
-
-    footer {
-      margin-top: 3.5rem;
-      font-size: .82rem;
-      color: var(--ink-soft);
-    }
-
-    footer a {
-      color: var(--navy-600);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer a:hover { color: var(--amber-dark); }
-
-    /* subtle background decoration */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(900px 500px at 90% -5%, rgba(240,180,41,.15), transparent 60%),
-        radial-gradient(700px 400px at -5% 105%, rgba(36,80,125,.12), transparent 55%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .card { position: relative; z-index: 1; }
+    .member-contact { margin-top: .5rem; display: flex; flex-direction: column; gap: .15rem; }
+    .member-contact-link { font-size: .82rem; color: #24507d; text-decoration: none; word-break: break-word; }
+    .member-contact-link:hover { color: #f0b429; text-decoration: underline; }
+    .contact-social { margin-top: 1.5rem; }
+    .contact-social .contact-label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #4d5a6b; margin-bottom: .6rem; }
+    .social-links { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .social-link { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: #1a3a5c; color: #fff; transition: background .2s ease, transform .2s ease; }
+    .social-link:hover { background: #f0b429; color: #12293f; transform: translateY(-2px); }
+    .research-figure { margin: 0 0 2.5rem; max-width: 960px; }
+    .research-figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid #e4ded3; box-shadow: 0 10px 30px rgba(26,58,92,.12); background: #fff; }
+    .research-figure figcaption { margin-top: .75rem; font-size: .85rem; line-height: 1.5; color: #4d5a6b; text-align: center; }
+    .alumni-table-wrap { overflow-x: auto; margin-top: .5rem; }
+    .alumni-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .alumni-table th { text-align: left; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #4d5a6b; padding: .55rem .75rem; border-bottom: 2px solid #e4ded3; white-space: nowrap; }
+    .alumni-table td { padding: .55rem .75rem; border-bottom: 1px solid #e4ded3; color: #1c2430; vertical-align: top; }
+    .alumni-table tbody tr:hover { background: rgba(26,58,92,.04); }
   </style>
 </head>
 <body>
 
-  <div class="card">
-
-    <div class="logo">
-      <img src="images/logo.png" alt="VBC Proteomics Tech Hub logo" class="site-logo" />
+  <!-- ===== Header / Navbar ===== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <img src="images/logo.png" alt="Proteomics Tech Hub" class="nav-logo" />
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <div class="divider"></div>
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">Vienna BioCenter · Core Technology Hub</p>
+      <h1 class="hero-title">Advancing proteomics technology<br />for the Vienna BioCenter.</h1>
+      <p class="hero-lead">The Proteomics Tech Hub develops and establishes next-generation single-cell
+        proteomics and crosslinking mass spectrometry methods — working as a hybrid
+        between a research group and a service facility to keep VBC science at the
+        forefront of the field.</p>
+      <div class="hero-actions">
+        <a href="#research" class="btn btn-primary">Our Research</a>
+        <a href="#contact" class="btn btn-ghost">Work With Us</a>
+      </div>
+    </div>
+  </section>
 
-    <h1>Our website is<br /><span>coming soon.</span></h1>
+  <!-- ===== Research ===== -->
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">What we do</p>
+        <h2 class="section-title">Research</h2>
+        <p class="section-intro">The Proteomics Technology Hub develops next-generation, mass spectrometry–based proteomics methods for the Vienna BioCenter campus and for the wider research community. Our current work spans single-cell and structural proteomics, and we are actively moving toward multiomic and spatial, deep visual omics analyses.</p>
+      </div>
+      <figure class="research-figure">
+        <img src="images/research/scp-workflow.png" alt="A typical single-cell proteomics workflow developed and applied at the hub: individual cells are isolated into nanowells, lysed and digested, optionally labeled, and analyzed by nano-LC–mass spectrometry to identify and quantify proteins for each cell. [image created with biorender.com, modified from Matzinger et al., Anal. Chem. 2023]" loading="lazy" />
+        <figcaption>A typical single-cell proteomics workflow developed and applied at the hub: individual cells are isolated into nanowells, lysed and digested, optionally labeled, and analyzed by nano-LC–mass spectrometry to identify and quantify proteins for each cell. [image created with biorender.com, modified from Matzinger et al., Anal. Chem. 2023]</figcaption>
+      </figure>
+      <div class="prose">
+        <h3 class="prose-q">Our mission</h3>
+        <p>We build, benchmark and improve proteomics workflows, and transfer mature methods into routine service on campus. Our aim is to develop robust, easy-to-use techniques that are of general value to the field — bridging cutting-edge method development with everyday application for research groups at the Vienna BioCenter and beyond.</p>
 
-    <p>
-      We are the Proteomics Technology Hub at the Vienna BioCenter — we are method developers at heart focusing on structural proteomics, single cell (multi)-omics and spatial proteomics to measure, map, and understand the biological processes at detail.
-      Our new website is currently under construction and will be live shortly.
-    </p>
+        <h3 class="prose-q">Single-cell proteomics</h3>
+        <p>Measuring proteins in individual cells reveals cellular heterogeneity that bulk measurements average away. We develop robust, easy-to-use sample-preparation workflows — from one-pot protocols to automated nanowell arrays — and push sensitivity on the latest instrumentation to quantify thousands of proteins per single cell.</p>
+        <p>These methods are now being applied to diverse biological questions, from immune and disease cell states to bacterial biology (Leodolter et al, Nature Commun., 2026; Bubis et al., Nature Methods 2025; Matzinger et al., Analytical Chemistry 2023; Ctortecka et al., Molecular &amp; Cellular Proteomics 2023).</p>
 
-    <div class="badge">Site under construction</div>
+        <h3 class="prose-q">Structural proteomics (crosslinking MS)</h3>
+        <p>Crosslinking mass spectrometry captures how proteins fold and interact within their native environment. We advance the throughput and sensitivity of these experiments and develop dedicated software for confident cross-link identification, enabling interactome and structural studies from purified complexes to whole cells (Müller et al., Nature Communications 2025; Bräuer et al., Communications Chemistry 2025; MS Annika: Birklbauer et al. Communications Chemistry 2024).</p>
 
-    <footer>
-      <p style="margin-top:1rem; margin-bottom:0;">
-        In the meantime, visit
-        <a href="https://www.viennabiocenter.org/" target="_blank" rel="noopener">viennabiocenter.org</a> or visit us on <a href="https://www.linkedin.com/company/proteomics-technology-hub/" target="_blank" rel="noopener">LinkedIN</a>
-        &nbsp;·&nbsp;
-        &copy; <span id="yr"></span> Manuel Matzinger, Proteomics Technology Hub
-      </p>
-    </footer>
+        <h3 class="prose-q">Future directions</h3>
+        <p>We are extending our toolkit toward multiomics and spatial, deep visual omics — integrating proteomics with complementary molecular readouts and preserving spatial context to map biology at ever-finer resolution.</p>
 
-  </div>
+        <h3 class="prose-q">Open to collaboration</h3>
+        <p>The hub is open to collaborations across the Vienna BioCenter and beyond. If you would like to apply or co-develop these technologies for your research, we would be glad to work with you to drive cutting-edge developments together.</p>
+      </div>
+    </div>
+  </section>
 
-  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <!-- ===== News ===== -->
+  <section class="section section-alt" id="news">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Latest updates</p>
+        <h2 class="section-title">News</h2>
+        <p class="section-intro">Awards, grants, and milestones from the Proteomics Tech Hub and its team.</p>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-date">
+            <span class="news-day">Mar 20</span>
+            <span class="news-yr">2026</span>
+          </div>
+          <div class="news-body">
+            <h3 class="news-title"><a href="https://www.imp.ac.at/news/article/fwf-grant-supports-new-method-to-study-gene-activity-and-proteins-at-single-cell-resolution" target="_blank" rel="noopener">FWF Grant Supports New Single-Cell Multiomics Method</a></h3>
+            <p class="news-summary">The Austrian Science Fund (FWF) has awarded a Stand Alone Grant to Manuel Matzinger and Viktoria Dorfer (Univ. of Applied Sciences Upper Austria) to develop a workflow that simultaneously analyses RNA and proteins from the same single cell. The project will use neural tube organoids to study how asymmetry arises during early nervous system development, with results made available via an open web application and R package.</p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">
+            <span class="news-day">Sep 29</span>
+            <span class="news-yr">2025</span>
+          </div>
+          <div class="news-body">
+            <h3 class="news-title"><a href="https://www.viennabiocenter.org/about/news/manuel-matzinger-awarded-apma-society-medal-for-single-cell-proteomics-research/" target="_blank" rel="noopener">Manuel Matzinger Awarded APMA Society Medal for Single-Cell Proteomics Research</a></h3>
+            <p class="news-summary">Manuel Matzinger, Deputy Head of the Proteomics Tech Hub, received the Society Medal of the Austrian Proteomics and Metabolomics Association (APMA) — the association's highest honour for early-career researchers. The award recognises his landmark Nature Methods publication describing a workflow that quantifies more than 5,000 proteins in a single cell. At the same conference, Matzinger was also elected to the APMA board.</p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">
+            <span class="news-day">Jan 16</span>
+            <span class="news-yr">2025</span>
+          </div>
+          <div class="news-body">
+            <h3 class="news-title"><a href="https://www.viennabiocenter.org/about/news/unprecedented-protein-quantification-in-single-cells-using-advanced-proteomics/" target="_blank" rel="noopener">Unprecedented Protein Quantification in Single Cells Using Advanced Proteomics</a></h3>
+            <p class="news-summary">Researchers at the Proteomics Tech Hub, in collaboration with Thermo Fisher Scientific and Nicolas Rivron's lab at IMBA, developed a single-cell proteomics workflow capable of quantifying up to 5,300 proteins per cell — published in Nature Methods. By optimising sample preparation, chromatography, and the novel Astral™ mass spectrometer, the team achieved resolution sufficient to detect cell-cycle stage and proteomic heterogeneity within seemingly uniform cell populations.</p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">
+            <span class="news-day">Aug 17</span>
+            <span class="news-yr">2023</span>
+          </div>
+          <div class="news-body">
+            <h3 class="news-title"><a href="https://www.viennabiocenter.org/about/news/25m-euros-funding-for-single-cell-proteomics/" target="_blank" rel="noopener">€2.5M Funding for Single-Cell Proteomics</a></h3>
+            <p class="news-summary">The Vienna BioCenter Core Facilities received €2.5 million from the Austrian Research Promotion Agency (FFG) to establish the Austrian Single-Cell Proteomics Platform (AT-SCP). The grant, led by Karl Mechtler and colleagues, funds state-of-the-art mass spectrometers and a picolitre-handling robotic system to push single-cell proteomics toward a robust, widely accessible collaboration service.</p>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-date">
+            <span class="news-day">Apr 4</span>
+            <span class="news-yr">2023</span>
+          </div>
+          <div class="news-body">
+            <h3 class="news-title"><a href="https://www.imp.ac.at/news/article/proteome-pioneer-award-for-karl-mechtler" target="_blank" rel="noopener">Proteome Pioneer Award for Karl Mechtler</a></h3>
+            <p class="news-summary">Karl Mechtler, Head of the Proteomics Tech Hub, became the first Austrian scientist to receive the prestigious Juan Pablo Albar Proteome Pioneer Award from the European Proteomics Association. The accolade recognises his decades of contributions to proteomics, both as a facility head and as a technology development leader.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Events ===== -->
+  <section class="section" id="events">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Conferences &amp; symposia</p>
+        <h2 class="section-title">Events</h2>
+        <p class="section-intro">We host and support international symposia on single-cell proteomics at the
+          Vienna BioCenter.</p>
+      </div>
+      <div class="event-grid">
+        <article class="event-card">
+          <div class="event-date">
+            <span class="event-day">Sep 1–3</span>
+            <span class="event-yr">2026</span>
+          </div>
+          <div class="event-body">
+            <span class="event-badge event-badge-live">2026</span>
+            <h3 class="event-title">7th European Symposium on Single Cell Proteomics (ESCP)</h3>
+            <p class="event-venue">IMP @ Vienna BioCenter · IMP lecture hall, Campus-Vienna-Biocenter 1, 1030 Vienna</p>
+            <p class="event-desc">Building on the success of previous symposia with over 240 registered participants, the IMP hosts the 7th ESCP. Free of charge, registration required. A <strong>scverse × single-cell proteomics 2026 hackathon</strong> follows on Sep 4–5 at the Vienna BioCenter, right after ESCP.</p>
+            <a class="event-link" href="https://www.apma.at/7thescp/" target="_blank" rel="noopener">Event website →</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-date">
+            <span class="event-day">Aug 31 – Sep 2</span>
+            <span class="event-yr">2027</span>
+          </div>
+          <div class="event-body">
+            <span class="event-badge event-badge-soon">2027 · Save the Date</span>
+            <h3 class="event-title">8th International Symposium on Single Cell Proteomics (ISCP)</h3>
+            <p class="event-venue">IMP @ Vienna BioCenter</p>
+            <p class="event-desc">Save the date — continuing the tradition as International Symposium on Single Cell Proteomics. Free of charge, registration not yet open.</p>
+            <p class="event-deadlines"><strong>Abstract deadline:</strong> June 1, 2027 &nbsp;·&nbsp; <strong>Registration deadline:</strong> July 31, 2027</p>
+            <a class="event-link" href="https://www.apma.at/iscp27/" target="_blank" rel="noopener">Event website →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Team ===== -->
+  <section class="section section-alt" id="team">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">People</p>
+        <h2 class="section-title">Team</h2>
+        <p class="section-intro">The scientists behind the Proteomics Tech Hub.</p>
+      </div>
+      <div class="team-grid">
+        <article class="member">
+          <img src="images/team/mechtler.jpg" alt="Karl Mechtler" class="avatar-img" />
+          <h3 class="member-name">Karl Mechtler</h3>
+          <p class="member-role">Head</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:karl.mechtler[at]imp.ac.at">karl.mechtler[at]imp.ac.at</a><a class="member-contact-link" href="tel:+431790444280">+43 1 79044 4280</a></div>
+        </article>
+        <article class="member">
+          <img src="images/team/matzinger.jpg" alt="Manuel Matzinger" class="avatar-img" />
+          <h3 class="member-name">Manuel Matzinger</h3>
+          <p class="member-role">Deputy Head</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:manuel.matzinger[at]imp.ac.at">manuel.matzinger[at]imp.ac.at</a><a class="member-contact-link" href="tel:+431797304279">+43 1 79730 4279</a></div>
+        </article>
+        <article class="member">
+          <img src="images/team/mayer.jpg" alt="Rupert Mayer" class="avatar-img" />
+          <h3 class="member-name">Rupert Mayer</h3>
+          <p class="member-role">Senior Core Scientist</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:rupert.mayer[at]imba.oeaw.ac.at">rupert.mayer[at]imba.oeaw.ac.at</a></div>
+        </article>
+        <article class="member">
+          <img src="images/team/isabella-burger.png" alt="Isabella Burger" class="avatar-img" />
+          <h3 class="member-name">Isabella Burger</h3>
+          <p class="member-role">Advanced Research Associate</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:isabella.burger[at]imp.ac.at">isabella.burger[at]imp.ac.at</a></div>
+        </article>
+      </div>
+
+      <h3 class="team-subhead">Students</h3>
+      <div class="team-grid">
+        <article class="member">
+          <img src="images/team/cusa.jpg" alt="Anna Cusa" class="avatar-img" />
+          <h3 class="member-name">Anna Cusa</h3>
+          <p class="member-role">PhD Student</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:anna.cusa[at]imp.ac.at">anna.cusa[at]imp.ac.at</a></div>
+        </article>
+        <article class="member">
+          <img src="images/team/dennis-dannecker.jpg" alt="Dennis Dannecker" class="avatar-img" />
+          <h3 class="member-name">Dennis Dannecker</h3>
+          <p class="member-role">Master Student</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:dennis.dannecker[at]imp.ac.at">dennis.dannecker[at]imp.ac.at</a></div>
+        </article>
+        <article class="member">
+          <img src="images/team/tim-thierer.jpg" alt="Tim Thierer" class="avatar-img" />
+          <h3 class="member-name">Tim Thierer</h3>
+          <p class="member-role">PhD Student</p>
+          <div class="member-contact"><a class="member-contact-link" href="mailto:tim.thierer[at]imp.ac.at">tim.thierer[at]imp.ac.at</a></div>
+        </article>
+      </div>
+
+      <h3 class="team-subhead">Alumni</h3>
+      <div class="alumni-table-wrap">
+        <table class="alumni-table">
+          <thead>
+            <tr><th>Name</th><th>Role</th><th></th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Iulia Bubis</td><td>PostDoc</td><td></td><td></td></tr>
+            <tr><td>Fränze Müller</td><td>PostDoc</td><td></td><td></td></tr>
+            <tr><td>Peter Pichler</td><td>PostDoc</td><td></td><td></td></tr>
+            <tr><td>Rebecca Beveridge</td><td>PostDoc</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Publications ===== -->
+  <section class="section" id="publications">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Selected work</p>
+        <h2 class="section-title">Publications</h2>
+        <p class="section-intro">
+          Recent peer-reviewed publications (2021–2026).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/?term=karl+mechtler&amp;sort=pubdate" target="_blank" rel="noopener">View all on PubMed &rarr;</a>
+        </p>
+      </div>
+      <ol class="pub-list">
+        <li class="pub-item">
+          <a class="pub-title" href="https://www.nature.com/articles/s41467-026-77426-y" target="_blank" rel="noopener">Pushing the limits of single-cell proteomics to investigate bacterial heterogeneity using bacSCP</a>
+          <p class="pub-meta"><span class="pub-authors">Leodolter J et al.</span> · <span class="pub-journal">Nat Commun</span> <span class="pub-year">2026</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41598-026-45228-3" target="_blank" rel="noopener">Low-resolution FAIMS for increased peptide coverage in low-load and single-cell proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Hoch DG et al.</span> · <span class="pub-journal">Sci Rep</span> <span class="pub-year">2026</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41467-025-67367-3" target="_blank" rel="noopener">Single cell proteomic analysis defines discrete neutrophil functional states in human glioblastoma.</a>
+          <p class="pub-meta"><span class="pub-authors">Sadiku P et al.</span> · <span class="pub-journal">Nat Commun</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41467-025-64844-7" target="_blank" rel="noopener">Breaking barriers in crosslinking mass spectrometry with enhanced throughput and sensitivity using Orbitrap Astral.</a>
+          <p class="pub-meta"><span class="pub-authors">Müller F et al.</span> · <span class="pub-journal">Nat Commun</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s42004-025-01644-6" target="_blank" rel="noopener">In vivo crosslinking and effective 2D enrichment for proteome wide interactome studies.</a>
+          <p class="pub-meta"><span class="pub-authors">Bräuer P et al.</span> · <span class="pub-journal">Commun Chem</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1016/j.mcpro.2025.101024" target="_blank" rel="noopener">A Roadmap for Improving Reliability and Data Sharing in Crosslinking Mass Spectrometry.</a>
+          <p class="pub-meta"><span class="pub-authors">Rappsilber J et al.</span> · <span class="pub-journal">Mol Cell Proteomics</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s42004-025-01568-1" target="_blank" rel="noopener">Developing a new cleavable crosslinker reagent for in-cell crosslinking.</a>
+          <p class="pub-meta"><span class="pub-authors">Müller F et al.</span> · <span class="pub-journal">Commun Chem</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41592-024-02559-1" target="_blank" rel="noopener">Challenging the Astral mass analyzer to quantify up to 5,300 proteins per single cell at unseen accuracy to uncover cellular heterogeneity.</a>
+          <p class="pub-meta"><span class="pub-authors">Bubis JA et al.</span> · <span class="pub-journal">Nat Methods</span> <span class="pub-year">2025</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s42004-024-01386-x" target="_blank" rel="noopener">Proteome-wide non-cleavable crosslink identification with MS Annika 3.0 reveals the structure of the C. elegans Box C/D complex.</a>
+          <p class="pub-meta"><span class="pub-authors">Birklbauer MJ et al.</span> · <span class="pub-journal">Commun Chem</span> <span class="pub-year">2024</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41467-024-45391-z" target="_blank" rel="noopener">Micropillar arrays, wide window acquisition and AI-based data analysis improve comprehensiveness in multiple proteomic applications.</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M et al.</span> · <span class="pub-journal">Nat Commun</span> <span class="pub-year">2024</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1016/j.mcpro.2023.100694" target="_blank" rel="noopener">A Causal Model of Ion Interference Enables Assessment and Correction of Ratio Compression in Multiplex Proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Madern M et al.</span> · <span class="pub-journal">Mol Cell Proteomics</span> <span class="pub-year">2024</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.analchem.3c03058" target="_blank" rel="noopener">A High-Sensitivity Low-Nanoflow LC-MS Configuration for High-Throughput Sample-Limited Proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Zheng R et al.</span> · <span class="pub-journal">Anal Chem</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.3390/biology12121514" target="_blank" rel="noopener">Immunopeptidomics in the Era of Single-Cell Proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Mayer RL, Mechtler K.</span> · <span class="pub-journal">Biology</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1016/j.mcpro.2023.100665" target="_blank" rel="noopener">An Automated Nanowell-Array Workflow for Quantitative Multiplexed Single-Cell Proteomics Sample Preparation at High Sensitivity.</a>
+          <p class="pub-meta"><span class="pub-authors">Ctortecka C et al.</span> · <span class="pub-journal">Mol Cell Proteomics</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.jproteome.3c00325" target="_blank" rel="noopener">MS Annika 2.0 Identifies Cross-Linked Peptides in MS2-MS3-Based Workflows at High Sensitivity and Specificity.</a>
+          <p class="pub-meta"><span class="pub-authors">Birklbauer MJ et al.</span> · <span class="pub-journal">J Proteome Res</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1080/14789450.2023.2260954" target="_blank" rel="noopener">Improving single cell proteomics experiments: how can we best utilize latest-generation data acquisition and MS instrument architecture?</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M, Mechtler K.</span> · <span class="pub-journal">Expert Rev Proteomics</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1002/pmic.202200162" target="_blank" rel="noopener">Label-free single cell proteomics utilizing ultrafast LC and MS instrumentation: A valuable complementary technique to multiplexing.</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M et al.</span> · <span class="pub-journal">Proteomics</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.analchem.2c05022" target="_blank" rel="noopener">Robust and Easy-to-Use One-Pot Workflow for Label-Free Single-Cell Proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M et al.</span> · <span class="pub-journal">Anal Chem</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41586-022-05623-y" target="_blank" rel="noopener">A molecular network of conserved factors keeps ribosomes dormant in the egg.</a>
+          <p class="pub-meta"><span class="pub-authors">Leesch F et al.</span> · <span class="pub-journal">Nature</span> <span class="pub-year">2023</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.analchem.2c01196" target="_blank" rel="noopener">Deep Proteome Profiling with Reduced Carryover Using Superficially Porous Microfabricated nanoLC Columns.</a>
+          <p class="pub-meta"><span class="pub-authors">Stejskal K et al.</span> · <span class="pub-journal">Anal Chem</span> <span class="pub-year">2022</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41467-022-31701-w" target="_blank" rel="noopener">Mimicked synthetic ribosomal protein complex for benchmarking crosslinking mass spectrometry workflows.</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M et al.</span> · <span class="pub-journal">Nat Commun</span> <span class="pub-year">2022</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41586-022-04779-x" target="_blank" rel="noopener">Differential cofactor dependencies define distinct types of human enhancers.</a>
+          <p class="pub-meta"><span class="pub-authors">Neumayr C et al.</span> · <span class="pub-journal">Nature</span> <span class="pub-year">2022</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.analchem.1c04174" target="_blank" rel="noopener">Quantitative Accuracy and Precision in Multiplexed Single-Cell Proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Ctortecka C et al.</span> · <span class="pub-journal">Anal Chem</span> <span class="pub-year">2022</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1016/j.mcpro.2021.100177" target="_blank" rel="noopener">Comparative Proteome Signatures of Trace Samples by Multiplexed Data-Independent Acquisition.</a>
+          <p class="pub-meta"><span class="pub-authors">Ctortecka C et al.</span> · <span class="pub-journal">Mol Cell Proteomics</span> <span class="pub-year">2022</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1038/s41586-021-04035-8" target="_blank" rel="noopener">AKIRIN2 controls the nuclear import of proteasomes in vertebrates.</a>
+          <p class="pub-meta"><span class="pub-authors">de Almeida M et al.</span> · <span class="pub-journal">Nature</span> <span class="pub-year">2021</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.analchem.1c00990" target="_blank" rel="noopener">Ultrasensitive NanoLC-MS of Subnanogram Protein Samples Using Second Generation Micropillar Array LC Technology with Orbitrap Exploris 480 and FAIMS PRO.</a>
+          <p class="pub-meta"><span class="pub-authors">Stejskal K et al.</span> · <span class="pub-journal">Anal Chem</span> <span class="pub-year">2021</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.jproteome.0c00583" target="_blank" rel="noopener">Cleavable Cross-Linkers and Mass Spectrometry for the Ultimate Task of Profiling Protein-Protein Interaction Networks in Vivo.</a>
+          <p class="pub-meta"><span class="pub-authors">Matzinger M, Mechtler K.</span> · <span class="pub-journal">J Proteome Res</span> <span class="pub-year">2021</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1021/acs.jproteome.0c01000" target="_blank" rel="noopener">MS Annika: A New Cross-Linking Search Engine.</a>
+          <p class="pub-meta"><span class="pub-authors">Pirklbauer GJ et al.</span> · <span class="pub-journal">J Proteome Res</span> <span class="pub-year">2021</span></p>
+        </li>
+        <li class="pub-item">
+          <a class="pub-title" href="https://doi.org/10.1002/ansa.202000152" target="_blank" rel="noopener">The rise of single-cell proteomics.</a>
+          <p class="pub-meta"><span class="pub-authors">Ctortecka C, Mechtler K.</span> · <span class="pub-journal">Anal Sci Adv</span> <span class="pub-year">2021</span></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section section-alt" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="section-eyebrow">Get in touch</p>
+        <h2 class="section-title">Contact</h2>
+        <p class="contact-lead">Interested in a collaboration or a pilot study? Reach out and our team will get back to you.</p>
+        <ul class="contact-details">
+          <li>
+            <span class="contact-label">Address</span>
+            Proteomics Tech Hub<br>
+            IMP @ Vienna BioCenter<br>
+            Campus-Vienna-Biocenter 1<br>
+            1030 Vienna, Austria
+          </li>
+          <li>
+            <span class="contact-label">Email</span>
+            <a href="mailto:karl.mechtler[at]imp.ac.at">karl.mechtler[at]imp.ac.at</a>
+          </li>
+        </ul>
+        <div class="contact-social">
+          <span class="contact-label">Follow us</span>
+          <div class="social-links">
+            <a class="social-link" href="https://www.linkedin.com/company/proteomics-technology-hub/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.848 3.37-1.848 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">Proteomics Tech Hub</span>
+        <p class="footer-tagline">Proteomics Technology Hub at the Vienna BioCenter.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.viennabiocenter.org/" target="_blank" rel="noopener">Vienna BioCenter</a>
+        <a href="#research">Research</a>
+        <a href="#team">Team</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-social" aria-label="Social links">
+        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=karl+mechtler&amp;sort=pubdate" target="_blank" rel="noopener" aria-label="PubMed">PubMed</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Proteomics Tech Hub, design Manuel Matzinger · Vienna BioCenter. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
