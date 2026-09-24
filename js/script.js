@@ -3,7 +3,7 @@
    - Mobile hamburger menu toggle
    - Smooth scroll on nav clicks (with sticky-header offset)
    - Sticky header shadow on scroll
-   - Current year + demo contact form handling
+   - Current year + contact form (sends email via FormSubmit)
    =========================================================== */
 (function () {
   'use strict';
@@ -70,7 +70,7 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Demo contact form (front-end only, no backend) ---- */
+  /* ---- Contact form (sends a real email via FormSubmit) ---- */
   var form = document.getElementById('contact-form');
   var note = document.getElementById('form-note');
   if (form) {
@@ -83,9 +83,47 @@
         note.className = 'form-note error';
         return;
       }
-      note.textContent = 'Thanks! This is a demo form — no message was actually sent.';
-      note.className = 'form-note success';
-      form.reset();
+
+      var btn = form.querySelector('button[type="submit"]');
+      var btnText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
+      note.textContent = 'Sending your message\u2026';
+      note.className = 'form-note';
+
+      function fieldVal(id) { var el = form.querySelector(id); return el ? el.value : ''; }
+
+      var payload = {
+        name: fieldVal('#cf-name'),
+        email: fieldVal('#cf-email'),
+        message: fieldVal('#cf-message'),
+        _subject: 'New enquiry from the Proteomics Tech Hub website',
+        _cc: 'karl.mechtler@imp.ac.at',
+        _template: 'table',
+        _captcha: 'false'
+      };
+
+      fetch('https://formsubmit.co/ajax/manuel.matzinger@imp.ac.at', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && (data.success === true || String(data.success) === 'true')) {
+            note.textContent = 'Thank you! Your message has been sent.';
+            note.className = 'form-note success';
+            form.reset();
+          } else {
+            throw new Error('send failed');
+          }
+        })
+        .catch(function () {
+          note.textContent = 'Sorry, your message could not be sent. Please email us directly at karl.mechtler@imp.ac.at.';
+          note.className = 'form-note error';
+        })
+        .then(function () {
+          if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        });
     });
   }
 })();
