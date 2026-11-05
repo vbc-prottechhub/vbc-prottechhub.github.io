@@ -10,6 +10,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
+
+  .hero.pth-photo-hero { position: relative; isolation: isolate; min-height: 520px; display: flex; align-items: center; padding: 3rem 0; color: #fff; background: #12293f; overflow: hidden; }
+  .pth-photo-hero .pth-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center right; z-index: 0; }
+  .pth-photo-hero .pth-hero-scrim { position: absolute; inset: 0; background: linear-gradient(100deg,rgba(13,28,43,.95) 0%,rgba(16,36,56,.9) 48%,rgba(18,41,63,.3) 100%); z-index: 1; }
+  .pth-photo-hero .hero-inner { position: relative; z-index: 2; display: flex; align-items: center; gap: 2.6rem; width: 100%; max-width: 1120px; }
+  .pth-hero-logo { flex: 0 0 210px; width: 210px; height: 210px; border-radius: 50%; background: #fff; border: 5px solid #f0b429; box-shadow: 0 20px 50px rgba(0,0,0,.5); overflow: hidden; }
+  .pth-hero-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .pth-hero-text { max-width: 620px; min-width: 0; }
+  .pth-photo-hero .hero-title { font-size: clamp(2rem,3.9vw,2.9rem); color: #fff; }
+  .pth-photo-hero .hero-lead { color: rgba(255,255,255,.92); }
+  .pth-focus { background: #f4f1ea; }
+  .pth-focus-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.8rem; }
+  .pth-focus-card { background: #fff; border: 1px solid #e4ded3; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(26,58,92,.08); }
+  .pth-focus-image { aspect-ratio: 1; overflow: hidden; position: relative; background: #1a3a5c; margin: 0; }
+  .pth-focus-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pth-focus-image figcaption { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(transparent,rgba(10,22,34,.94)); color: #fff; font-size: .72rem; line-height: 1.4; padding: 1.8rem .75rem .6rem; }
+  .pth-focus-body { padding: 1.4rem 1.4rem 1.7rem; }
+  .pth-focus-body h3 { font-family: var(--font-serif); font-size: 1.15rem; color: #1a3a5c; margin: .3rem 0 .5rem; }
+  .pth-focus-number { font-size: .75rem; font-weight: 700; color: #946800; letter-spacing: .08em; }
+  .pth-focus-body p { font-size: .9rem; color: #4d5a6b; margin: 0; }
+  @media(max-width: 800px) {
+    .pth-photo-hero .hero-inner { gap: 1.5rem; }
+    .pth-hero-logo { flex-basis: 160px; width: 160px; height: 160px; }
+    .pth-focus-grid { gap: 1rem; }
+  }
+  @media(max-width: 600px) {
+    .hero.pth-photo-hero { min-height: 0; padding: 2.5rem 0; }
+    .pth-photo-hero .hero-inner { flex-direction: column; align-items: flex-start; }
+    .pth-hero-logo { flex-basis: auto; }
+    .pth-photo-hero .pth-hero-scrim { background: linear-gradient(100deg,rgba(13,28,43,.94),rgba(18,41,63,.75)); }
+    .pth-focus-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
     .member-contact { margin-top: .5rem; display: flex; flex-direction: column; gap: .15rem; }
     .member-contact-link { font-size: .82rem; color: #24507d; text-decoration: none; word-break: break-word; }
     .member-contact-link:hover { color: #f0b429; text-decoration: underline; }
@@ -53,18 +86,69 @@
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
+  <section class="hero pth-photo-hero" id="top">
+    <img class="pth-hero-photo" src="images/redesign/masspec-hero-v1.jpg" alt="" aria-hidden="true" fetchpriority="high" />
+    <div class="pth-hero-scrim" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <p class="hero-eyebrow">Vienna BioCenter · Core Technology Hub</p>
-      <h1 class="hero-title">Advancing proteomics technology<br />for the Vienna BioCenter.</h1>
-      <p class="hero-lead">The Proteomics Tech Hub develops and establishes next-generation single-cell
+      <div class="pth-hero-logo"><img src="images/redesign/logo-bubble-v1.png" alt="Proteomics Tech Hub logo" width="210" height="210" /></div>
+      <div class="pth-hero-text">
+        <p class="hero-eyebrow">Vienna BioCenter · Core Technology Hub</p>
+        <h1 class="hero-title">Advancing proteomics technology<br />for the Vienna BioCenter.</h1>
+        <p class="hero-lead">The Proteomics Tech Hub develops and establishes next-generation single-cell
         proteomics and crosslinking mass spectrometry methods — working as a hybrid
         between a research group and a service facility to keep VBC science at the
         forefront of the field.</p>
-      <div class="hero-actions">
-        <a href="#research" class="btn btn-primary">Our Research</a>
-        <a href="#contact" class="btn btn-ghost">Work With Us</a>
+        <div class="hero-actions">
+          <a href="#research" class="btn btn-primary">Our Research</a>
+          <a href="#contact" class="btn btn-ghost">Work With Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pth-focus" aria-labelledby="research-focus-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Research focus</p>
+        <h2 class="section-title" id="research-focus-title">What we work on</h2>
+        <p class="section-intro">We develop and apply cutting-edge mass-spectrometry methods across three complementary research areas.</p>
+      </div>
+      <div class="pth-focus-grid">
+        <article class="pth-focus-card">
+          <figure class="pth-focus-image">
+            <img src="images/redesign/xlms-v1.jpg" alt="Molecular network artwork from the Journal of Proteome Research cover" width="640" height="640" loading="lazy" />
+            <figcaption>Cover: J. Proteome Res. 2020, 19(5) · ACS</figcaption>
+          </figure>
+          <div class="pth-focus-body">
+            <span class="pth-focus-number">01</span>
+            <h3>Crosslinking MS (XL-MS)</h3>
+            <p>Mapping protein structures and interaction networks by capturing spatial constraints with chemical crosslinkers.</p>
+          </div>
+        </article>
+
+        <article class="pth-focus-card">
+          <figure class="pth-focus-image">
+            <img src="images/redesign/scp-v1.jpg" alt="Two illustrated cells from the Proteomics journal cover" width="640" height="640" loading="lazy" />
+            <figcaption>Cover: Proteomics 2023, 23(13–14) · Wiley</figcaption>
+          </figure>
+          <div class="pth-focus-body">
+            <span class="pth-focus-number">02</span>
+            <h3>Single-cell proteomics</h3>
+            <p>Measuring the proteome of individual cells to resolve heterogeneity invisible in bulk measurements.</p>
+          </div>
+        </article>
+
+        <article class="pth-focus-card">
+          <figure class="pth-focus-image">
+            <img src="images/redesign/spatial-v1.jpg" alt="Illustration of laser microdissection of tissue for spatial proteomics" width="640" height="640" loading="lazy" />
+            <figcaption>AI-generated illustration</figcaption>
+          </figure>
+          <div class="pth-focus-body">
+            <span class="pth-focus-number">03</span>
+            <h3>Spatial omics</h3>
+            <p>Combining laser microdissection with deep proteomics to map protein expression directly within tissue context.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
